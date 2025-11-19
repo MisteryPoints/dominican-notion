@@ -1,38 +1,45 @@
 import React from 'react';
 import NewDocumentButton from './NewDocumentButton';
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
+  Drawer, 
+  DrawerContent, 
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { MenuIcon } from 'lucide-react';
 
 function Sidebar() {
-  return (
-    <div className='p-2 md:p-5 bg-gray-200 relative'>
-        <Drawer direction='left'>
-            <DrawerTrigger>Abrir</DrawerTrigger>
-            <DrawerContent>
-                <DrawerHeader>
-                    <DrawerTitle>¿Estás seguro?</DrawerTitle>
-                    <DrawerDescription>
-                        Esta acción, no podrá deshacerse. Esto eliminarJ
-                    </DrawerDescription>
-                </DrawerHeader>
-                <DrawerFooter>
-                    <DrawerClose>Close</DrawerClose>
-                </DrawerFooter>
-            </DrawerContent>
-        </Drawer>
-        <div className="hidden md:inline">
+
+    const menuOptions = (
+        <>
             <NewDocumentButton />
-        </div> 
-    </div>
-  );
+        </>
+    )
+
+    return (
+        <div className='p-2 md:p-5 bg-gray-200 relative'>
+            <div className='md:hidden'>
+                <Drawer direction='left'>
+                    <DrawerTrigger>
+                        <MenuIcon className='p-2 hover:opacity-30 rounded-lg' size={40} /> 
+                    </DrawerTrigger>
+                    <DrawerContent>
+                        <DrawerHeader>
+                            <DrawerTitle>Menu</DrawerTitle>
+                            <div>
+                                {/* Options */}
+                                {menuOptions}
+                            </div>  
+                        </DrawerHeader> 
+                    </DrawerContent>
+                </Drawer>
+            </div>
+            <div className="hidden md:inline">
+                {menuOptions}
+            </div> 
+        </div>
+    );
 };
 
 export default Sidebar;
