@@ -9,7 +9,7 @@ function Header() {
         <div>
             {user && (
                 <h1 className='text-2xl'>
-                    Espacio de: { user?.firstName }
+                    El rincón de { user?.firstName }
                 </h1>
             )}
 
